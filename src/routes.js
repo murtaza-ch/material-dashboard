@@ -1,13 +1,14 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
-import DashboardLayout from 'src/layouts/DashboardLayout';
-import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
+import AltDashboardView from 'src/views/reports/AltDashboardView';
 import CustomerListView from 'src/views/customer/CustomerListView';
+import DashboardLayout from 'src/layouts/DashboardLayout';
 import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
+import MainLayout from 'src/layouts/MainLayout';
+import { Navigate } from 'react-router-dom';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
+import React from 'react';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 
@@ -19,6 +20,7 @@ const routes = [
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
+      { path: 'altdashboard', element: <AltDashboardView /> },
       { path: 'products', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }

@@ -1,6 +1,14 @@
-import React, { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import {
+  Airplay as AirPlayIcon,
+  AlertCircle as AlertCircleIcon,
+  BarChart as BarChartIcon,
+  Lock as LockIcon,
+  Settings as SettingsIcon,
+  ShoppingBag as ShoppingBagIcon,
+  User as UserIcon,
+  UserPlus as UserPlusIcon,
+  Users as UsersIcon
+} from 'react-feather';
 import {
   Avatar,
   Box,
@@ -12,22 +20,26 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import {
-  AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon
-} from 'react-feather';
+import React, { useEffect } from 'react';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
+
+import ExpandLess from '@material-ui/icons/ExpandLess';
 import NavItem from './NavItem';
+import PropTypes from 'prop-types';
+
+// import Collapse from '@material-ui/core/Collapse';
+
+// import ExpandMore from '@material-ui/icons/ExpandMore';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemText from '@material-ui/core/ListItemText';
+
+// import StarBorder from '@material-ui/icons/StarBorder';
 
 const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
+  avatar: '/static/images/avatars/murtaza.jpg',
+  jobTitle: 'Mern Stack Developer',
+  name: 'Murtaza Asghar'
 };
 
 const items = [
@@ -35,6 +47,11 @@ const items = [
     href: '/app/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
+  },
+  {
+    href: '/app/altdashboard',
+    icon: AirPlayIcon,
+    title: 'Alternative Dashboard'
   },
   {
     href: '/app/customers',
@@ -93,6 +110,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
 
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
@@ -101,80 +124,56 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   }, [location.pathname]);
 
   const content = (
-    <Box
-      height="100%"
-      display="flex"
-      flexDirection="column"
-    >
-      <Box
-        alignItems="center"
-        display="flex"
-        flexDirection="column"
-        p={2}
-      >
+    <Box height="100%" display="flex" flexDirection="column">
+      <Box alignItems="center" display="flex" flexDirection="column" p={2}>
         <Avatar
           className={classes.avatar}
           component={RouterLink}
           src={user.avatar}
           to="/app/account"
         />
-        <Typography
-          className={classes.name}
-          color="textPrimary"
-          variant="h5"
-        >
+        <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
+        <Typography color="textSecondary" variant="body2">
           {user.jobTitle}
         </Typography>
       </Box>
       <Divider />
       <Box p={2}>
         <List>
-          {items.map((item) => (
+          {items.map(item => (
             <NavItem
               href={item.href}
               key={item.title}
               title={item.title}
               icon={item.icon}
-            />
+            >
+              <ExpandLess />
+            </NavItem>
+            /* <Collapse in={open} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItem button className={classes.nested}>
+                    <ListItemIcon>
+                      <StarBorder />
+                    </ListItemIcon>
+                    <ListItemText primary="Starred" />
+                  </ListItem>
+                </List>
+              </Collapse> */
           ))}
         </List>
       </Box>
       <Box flexGrow={1} />
-      <Box
-        p={2}
-        m={2}
-        bgcolor="background.dark"
-      >
-        <Typography
-          align="center"
-          gutterBottom
-          variant="h4"
-        >
+      <Box p={2} m={2} bgcolor="background.dark">
+        <Typography align="center" gutterBottom variant="h4">
           Need more?
         </Typography>
-        <Typography
-          align="center"
-          variant="body2"
-        >
+        <Typography align="center" variant="body2">
           Upgrade to PRO version and access 20 more screens
         </Typography>
-        <Box
-          display="flex"
-          justifyContent="center"
-          mt={2}
-        >
-          <Button
-            color="primary"
-            component="a"
-            href="https://react-material-kit.devias.io"
-            variant="contained"
-          >
+        <Box display="flex" justifyContent="center" mt={2}>
+          <Button color="primary" component="a" href="/" variant="contained">
             See PRO version
           </Button>
         </Box>
