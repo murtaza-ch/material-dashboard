@@ -1,15 +1,13 @@
+import { Box, Container, makeStyles } from '@material-ui/core';
 import React, { useState } from 'react';
-import {
-  Box,
-  Container,
-  makeStyles
-} from '@material-ui/core';
+
 import Page from 'src/components/Page';
 import Results from './Results';
+import TabTable from './TabTable';
 import Toolbar from './Toolbar';
 import data from './data';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
@@ -23,15 +21,10 @@ const CustomerListView = () => {
   const [customers] = useState(data);
 
   return (
-    <Page
-      className={classes.root}
-      title="Customers"
-    >
+    <Page className={classes.root} title="Customers">
       <Container maxWidth={false}>
         <Toolbar />
-        <Box mt={3}>
-          <Results customers={customers} />
-        </Box>
+        <TabTable />
       </Container>
     </Page>
   );

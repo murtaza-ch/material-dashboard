@@ -5,6 +5,9 @@ import {
   CardContent,
   CardHeader,
   Divider,
+  List,
+  ListItem,
+  ListItemText,
   Typography,
   colors,
   makeStyles,
@@ -18,7 +21,11 @@ import React from 'react';
 import clsx from 'clsx';
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
+  action: {
+    marginTop: 4,
+    marginRight: 4
+  }
 }));
 
 const ActiveUsers = ({ className, ...rest }) => {
@@ -99,20 +106,63 @@ const ActiveUsers = ({ className, ...rest }) => {
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
-        title="Latest Sales"
+        className={classes.action}
+        title="Active Users"
+        subheader="Page views per second"
         action={
-          <Typography component="h3" variant="h4">
-            109
+          <Typography variant="h3" color="inherit">
+            143
           </Typography>
         }
       />
-      <Divider />
       <CardContent>
-        <Box height={400} position="relative">
+        <Box height={150} position="relative">
           <Bar data={data} options={options} />
         </Box>
       </CardContent>
-      <Divider />
+      <List>
+        <ListItem divider>
+          <ListItemText>
+            <Typography display="block" variant="body2" color="textSecondary">
+              /app/projects
+            </Typography>
+          </ListItemText>
+          <Typography display="block" variant="body1">
+            24
+          </Typography>
+        </ListItem>
+
+        <ListItem divider>
+          <ListItemText>
+            <Typography display="block" variant="body2" color="textSecondary">
+              /app/chat
+            </Typography>
+          </ListItemText>
+          <Typography display="block" variant="body1">
+            13
+          </Typography>
+        </ListItem>
+        <ListItem divider>
+          <ListItemText>
+            <Typography display="block" variant="body2" color="textSecondary">
+              /cart
+            </Typography>
+          </ListItemText>
+          <Typography display="block" variant="body1">
+            20
+          </Typography>
+        </ListItem>
+        <ListItem divider>
+          <ListItemText>
+            <Typography display="block" variant="body2" color="textSecondary">
+              /cart/checkout
+            </Typography>
+          </ListItemText>
+          <Typography display="block" variant="body1">
+            8
+          </Typography>
+        </ListItem>
+      </List>
       <Box display="flex" justifyContent="flex-end" p={2}>
         <Button
           color="primary"

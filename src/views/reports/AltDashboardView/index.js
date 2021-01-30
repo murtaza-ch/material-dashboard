@@ -3,8 +3,10 @@ import { Container, Grid, makeStyles } from '@material-ui/core';
 import ActiveUsers from './ActiveUsers';
 import Budget from './Budget';
 import FinanceStats from './FinanceStats';
+import LatestProjects from './LatestProjects';
 import Page from 'src/components/Page';
 import React from 'react';
+import TeamTasks from './TeamTasks';
 import Tools from './Tools';
 
 const useStyles = makeStyles(theme => ({
@@ -31,6 +33,12 @@ const AltDashboardView = () => {
           </Grid>
           <Grid item lg={9} xs={12}>
             <FinanceStats />
+          </Grid>
+          <Grid item lg={5} md={12} xl={3} xs={12}>
+            <TeamTasks />
+          </Grid>
+          <Grid item lg={7} md={12} xl={9} xs={12}>
+            <LatestProjects />
           </Grid>
         </Grid>
       </Container>

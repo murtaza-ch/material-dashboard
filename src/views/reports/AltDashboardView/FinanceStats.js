@@ -108,7 +108,7 @@ const FinanceStats = ({ className, ...rest }) => {
       />
       <Divider />
       <CardContent>
-        <Box height={400} position="relative">
+        <Box height={370} position="relative">
           <Line data={data} options={options} />
         </Box>
       </CardContent>
